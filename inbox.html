@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Памятка по сделке — Страна</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f5f9;--card:#fff;--text:#29303e;--mut:#6b7385;--line:#e1e4ec;--a:#951b81;--a2:#c7017f;--a3:#e30613;--hero:linear-gradient(110deg,#831f82 0%,#c7017f 60%,#e30613 100%);--btn:var(--hero);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-s=biz]{--a:#951b81;--a2:#29303e;--a3:#29303e;--hero:linear-gradient(110deg,#29303e 0 85%,#951b81 85% 100%);--btn:#29303e}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#171a22;--card:#222735;--text:#eef0f6;--mut:#9aa2b5;--line:#343b4e;color-scheme:dark}}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--text);font:15px/1.45 Montserrat,system-ui,sans-serif;padding-bottom:40px}
+.w{max-width:760px;margin:auto;padding:0 14px}
+header{background:var(--hero);color:#fff;padding:22px 0 26px;margin-bottom:16px}
+h1{font-size:21px;margin:0 0 4px}header p{margin:0;opacity:.85;font-size:13px}
+.logo{font-weight:700;letter-spacing:.35em;font-size:13px;margin-bottom:10px}
+.sch{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap;align-items:center;font-size:12px}
+.sch button{border:1px solid #fff9;background:#fff2;color:#fff;border-radius:99px;padding:5px 12px;font:inherit;cursor:pointer}.sch button.on{background:#fff;color:#29303e;font-weight:600}
+.bar{display:flex;gap:4px;margin-bottom:14px}.bar i{flex:1;height:5px;border-radius:9px;background:var(--line)}.bar i.d{background:var(--hero)}
+.st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.st h2{font-size:14px;margin:0 0 10px;display:flex;gap:8px;align-items:center}
+.n{width:24px;height:24px;border-radius:50%;background:var(--hero);color:#fff;font-size:12px;display:grid;place-items:center;flex:none}
+.o{display:flex;flex-wrap:wrap;gap:8px}
+.o button{font:inherit;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 14px;cursor:pointer}
+.o button.on{border-color:var(--a);background:var(--a);color:#fff;font-weight:600}.o button:disabled{opacity:.35;cursor:not-allowed}
+.hint{font-size:12px;color:var(--mut);margin:8px 0 0}
+.res{border:2px solid var(--a);background:var(--card);border-radius:14px;padding:14px;margin-top:6px}
+.res h2{margin:0 0 4px;font-size:16px}.tag{font-size:12px;color:var(--mut);margin-bottom:10px}
+label{display:block;font-size:12px;color:var(--mut);margin:10px 0 4px}
+input[type=text],textarea{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px}
+textarea{min-height:150px;resize:vertical}
+.ex{display:flex;gap:8px;align-items:flex-start;padding:6px 0;font-size:13px}
+.act{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.act a,.act button{font:inherit;font-weight:600;border-radius:10px;padding:12px 16px;cursor:pointer;text-decoration:none;text-align:center;flex:1;min-width:140px}
+.p{background:var(--btn);color:#fff;border:0}.g{background:none;border:1.5px solid var(--a);color:var(--a)}
+.rs{background:none;border:0;color:var(--mut);font:inherit;text-decoration:underline;cursor:pointer;margin-top:10px}
+.warn{color:var(--a3);font-size:13px}
+</style></head><body>
+<header><div class="w"><div class="logo">СТРАНА</div><h1>Памятка по этапам сделки</h1><p>Внутренний помощник отдела: ответьте на вопросы — получите готовую памятку для клиента</p>
+<div class="sch"><span>Цветовая схема:</span><button id="s1" class="on">Комфорт · градиент</button><button id="s2">Бизнес · чернильный и графит</button></div></div></header>
+<main class="w"><div class="bar" id="bar"></div><div id="steps"></div><div id="out"></div></main>
+<script>
+const R=[["K","Сбер","Ипотека не Сбер","","sber-ipoteka/"],["K","Сбер","Ипотека не Сбер","М","sber-ipoteka-MCK/"],["K","Сбер","Ипотека не Сбер","П","sber-ipoteka-parking/"],["K","Сбер","Ипотека не Сбер","МП","sber-ipoteka-MCK-parking/"],["K","Сбер","Ипотека Сбер","","sber-ipoteka-sber/"],["K","Сбер","Ипотека Сбер","М","sber-ipoteka-sber-MCK/"],["K","Сбер","Ипотека Сбер","П","sber-ipoteka-sber-parking/"],["K","Сбер","Ипотека Сбер","МП","sber-ipoteka-sber-MCK-parking/"],["K","Сбер","Наличка/ рассрочка","","sber-nalich-rassrochka/"],["K","Сбер","Наличка/ рассрочка","С","sber-sbr-nalich-rassrochka/"],["K","Сбер","Наличка/ рассрочка","М","sber-nalich-rassrochka-MCK/"],["K","Сбер","Наличка/ рассрочка","П","sber-nalich-rassrochka-parking/"],["K","Сбер","Наличка/ рассрочка","ПС","sber-sbr-nalich-rassrochka-parking/"],["K","Сбер","Наличка/ рассрочка","МП","sber-nalich-rassrochka-parking-MCK/"],["K","Сбер","Наличка/ рассрочка","МС","sber-sbr-nalich-rassrochka-MCK/"],["K","Сбер","Наличка/ рассрочка","МПС","sber-sbr-nalich-rassrochka-parking-MCK/"],["K","Сбер","Фонд","","sber-fond/"],["K","Сбер","Фонд","М","sber-fond-MCK/"],["K","Сбер","Фонд","П","sber-fond-parking/"],["K","Сбер","Фонд","МП","sber-fond-parking-MCK/"],["K","Альфа","Ипотека не Сбер","","alpha-ipoteka/"],["K","Альфа","Ипотека не Сбер","М","alpha-ipoteka-MCK/"],["K","Альфа","Ипотека не Сбер","П","alpha-ipoteka-parking/"],["K","Альфа","Ипотека не Сбер","МП","alpha-ipoteka-MCK-parking/"],["K","Альфа","Ипотека Сбер","","alpha-ipoteka-sber/"],["K","Альфа","Ипотека Сбер","М","alpha-ipoteka-sber-MCK/"],["K","Альфа","Ипотека Сбер","П","alpha-ipoteka-sber-parking/"],["K","Альфа","Ипотека Сбер","МП","alpha-ipoteka-sber-MCK-parking/"],["K","Альфа","Наличка/ рассрочка","","alpha-nalich-rassrochka/"],["K","Альфа","Наличка/ рассрочка","С","alpha-sbr-nalich-rassrochka/"],["K","Альфа","Наличка/ рассрочка","М","alpha-nalich-rassrochka-MCK/"],["K","Альфа","Наличка/ рассрочка","П","alpha-nalich-rassrochka-parking/"],["K","Альфа","Наличка/ рассрочка","ПС","alpha-sbr-nalich-rassrochka-parking/"],["K","Альфа","Наличка/ рассрочка","МП","alpha-nalich-rassrochka-parking-MCK/"],["K","Альфа","Наличка/ рассрочка","МС","alpha-sbr-nalich-rassrochka-MCK/"],["K","Альфа","Наличка/ рассрочка","МПС","alpha-sbr-nalich-rassrochka-parking-MCK/"],["K","Альфа","Фонд","","alpha-fond/"],["K","Альфа","Фонд","М","alpha-fond-MCK/"],["K","Альфа","Фонд","П","alpha-fond-parking/"],["K","Альфа","Фонд","МП","alpha-fond-parking-MCK/"],["K","Дом.РФ","Ипотека не Сбер","","domrf-ipoteka/"],["K","Дом.РФ","Ипотека не Сбер","М","domrf-ipoteka-MCK/"],["K","Дом.РФ","Ипотека не Сбер","П","domrf-ipoteka-parking/"],["K","Дом.РФ","Ипотека не Сбер","МП","domrf-ipoteka-MCK-parking/"],["K","Дом.РФ","Ипотека Сбер","","domrf-ipoteka-sber/"],["K","Дом.РФ","Ипотека Сбер","М","domrf-ipoteka-sber-MCK/"],["K","Дом.РФ","Ипотека Сбер","П","domrf-ipoteka-sber-parking/"],["K","Дом.РФ","Ипотека Сбер","МП","domrf-ipoteka-sber-MCK-parking/"],["K","Дом.РФ","Наличка/ рассрочка","","domrf-nalich-rassrochka/"],["K","Дом.РФ","Наличка/ рассрочка","С","domrf-sbr-nalich-rassrochka/"],["K","Дом.РФ","Наличка/ рассрочка","М","domrf-nalich-rassrochka-MCK/"],["K","Дом.РФ","Наличка/ рассрочка","П","domrf-nalich-rassrochka-parking/"],["K","Дом.РФ","Наличка/ рассрочка","ПС","domrf-sbr-nalich-rassrochka-parking/"],["K","Дом.РФ","Наличка/ рассрочка","МП","domrf-nalich-rassrochka-parking-MCK/"],["K","Дом.РФ","Наличка/ рассрочка","МС","domrf-sbr-nalich-rassrochka-MCK/"],["K","Дом.РФ","Наличка/ рассрочка","МПС","domrf-sbr-nalich-rassrochka-parking-MCK/"],["K","Дом.РФ","Фонд","","domrf-fond/"],["K","Дом.РФ","Фонд","М","domrf-fond-MCK/"],["K","Дом.РФ","Фонд","П","domrf-fond-parking/"],["K","Дом.РФ","Фонд","МП","domrf-fond-parking-MCK/"],["K","Газпром","Ипотека не Сбер","","gazprom-ipoteka/"],["K","Газпром","Ипотека не Сбер","М","gazprom-ipoteka-MCK/"],["K","Газпром","Ипотека не Сбер","П","gazprom-ipoteka-parking/"],["K","Газпром","Ипотека не Сбер","МП","gazprom-ipoteka-MCK-parking/"],["K","Газпром","Ипотека Сбер","","gazprom-ipoteka-sber/"],["K","Газпром","Ипотека Сбер","М","gazprom-ipoteka-sber-MCK/"],["K","Газпром","Ипотека Сбер","П","gazprom-ipoteka-sber-parking/"],["K","Газпром","Ипотека Сбер","МП","gazprom-ipoteka-sber-MCK-parking/"],["K","Газпром","Наличка/ рассрочка","","gazprom-nalich-rassrochka/"],["K","Газпром","Наличка/ рассрочка","С","gazprom-sbr-nalich-rassrochka/"],["K","Газпром","Наличка/ рассрочка","М","gazprom-sbr-nalich-rassrochka-MCK/"],["K","Газпром","Наличка/ рассрочка","П","gazprom-nalich-rassrochka-parking/"],["K","Газпром","Наличка/ рассрочка","ПС","gazprom-sbr-nalich-rassrochka-parking/"],["K","Газпром","Наличка/ рассрочка","МП","gazprom-nalich-rassrochka-parking-MCK/"],["K","Газпром","Наличка/ рассрочка","МС","gazprom-sbr-nalich-rassrochka-MCK/"],["K","Газпром","Наличка/ рассрочка","МПС","gazprom-sbr-nalich-rassrochka-parking-MCK/"],["K","Газпром","Фонд","","gazprom-fond/"],["K","Газпром","Фонд","М","gazprom-fond-MCK/"],["K","Газпром","Фонд","П","gazprom-fond-parking/"],["K","Газпром","Фонд","МП","gazprom-fond-parking-MCK/"],["D",null,"Ипотека","","dkp-ipoteka/"],["D",null,"Ипотека","М","dkp-ipoteka-MCK/"],["D",null,"Ипотека","П","dkp-ipoteka-parking/"],["D",null,"Ипотека","МП","dkp-ipoteka-MCK-parking/"],["D",null,"Наличка/ рассрочка","","dkp-nalich-rassrochka/"],["D",null,"Наличка/ рассрочка","С","dkp-sbr-nalich-rassrochka/"],["D",null,"Наличка/ рассрочка","М","dkp-nalich-rassrochka-MCK/"],["D",null,"Наличка/ рассрочка","П","dkp-nalich-rassrochka-parking/"],["D",null,"Наличка/ рассрочка","ПС","dkp-sbr-nalich-rassrochka-parking/"],["D",null,"Наличка/ рассрочка","МП","dkp-nalich-rassrochka-parking-MCK/"],["D",null,"Наличка/ рассрочка","МС","dkp-sbr-nalich-rassrochka-MCK/"],["D",null,"Наличка/ рассрочка","МПС","dkp-sbr-nalich-rassrochka-parking-MCK/"],["D",null,"Фонд","","dkp-fond/"],["D",null,"Фонд","М","dkp-fond-MCK/"],["D",null,"Фонд","П","dkp-fond-parking/"],["D",null,"Фонд","МП","dkp-fond-parking-MCK/"],["P","Сбер","Ипотека не Сбер","","PREMIUM-sber-ipoteka/"],["P","Сбер","Ипотека не Сбер","М","PREMIUM-sber-ipoteka-MCK/"],["P","Сбер","Ипотека не Сбер","П","PREMIUM-sber-ipoteka-parking/"],["P","Сбер","Ипотека не Сбер","МП","PREMIUM-sber-ipoteka-parking-MCK/"],["P","Сбер","Ипотека Сбер","","PREMIUM-sber-ipoteka-sber/"],["P","Сбер","Ипотека Сбер","М","PREMIUM-sber-ipoteka-sber-MCK/"],["P","Сбер","Ипотека Сбер","П","PREMIUM-sber-ipoteka-sber-parking/"],["P","Сбер","Ипотека Сбер","МП","PREMIUM-sber-ipoteka-sber-parking-MCK/"],["P","Сбер","Наличка/ рассрочка","","PREMIUM-sber-nalich-rassrochka/"],["P","Сбер","Наличка/ рассрочка","С","PREMIUM-sbr-sber-nalich-rassrochka/"],["P","Сбер","Наличка/ рассрочка","М","PREMIUM-sber-nalich-rassrochka-MCK/"],["P","Сбер","Наличка/ рассрочка","П","PREMIUM-sber-nalich-rassrochka-parking/"],["P","Сбер","Наличка/ рассрочка","ПС","PREMIUM-sbr-sber-nalich-rassrochka-parking/"],["P","Сбер","Наличка/ рассрочка","МП","PREMIUM-sber-nalich-rassrochka-parking-MCK/"],["P","Сбер","Наличка/ рассрочка","МС","PREMIUM-sbr-sber-nalich-rassrochka-MCK/"],["P","Сбер","Наличка/ рассрочка","МПС","PREMIUM-sbr-sber-nalich-rassrochka-parking-MCK/"],["P","Сбер","Фонд","","PREMIUM-sber-fond/"],["P","Сбер","Фонд","М","PREMIUM-sber-fond-MCK/"],["P","Сбер","Фонд","П","PREMIUM-sber-fond-parking/"],["P","Сбер","Фонд","МП","PREMIUM-sber-fond-parking-MCK/"]],X=[["Памятка по МСК","PMCK_DDU/"]],B='https://strana-development.github.io/';
+const S={cls:null,form:null,bank:null,cond:null,fl:new Set(),ex:new Set()};
+const $=id=>document.getElementById(id);
+const fk=f=>[...f].sort().join('');
+const uniq=a=>[...new Set(a)];
+function setS(s){document.documentElement.dataset.s=s;$('s1').classList.toggle('on',s=='com');$('s2').classList.toggle('on',s=='biz')}
+$('s1').onclick=()=>setS('com');$('s2').onclick=()=>setS('biz');setS('com');
+function rows(){return R.filter(r=>(!S.cls||(S.cls=='P'?r[0]=='P':S.form=='D'?r[0]=='D':r[0]=='K'))&&(!S.bank||r[1]==S.bank)&&(!S.cond||r[2]==S.cond))}
+function pick(k,v){S[k]=v;const o=['cls','form','bank','cond'];o.slice(o.indexOf(k)+1).forEach(x=>S[x]=null);S.fl=new Set();S.ex=new Set();if(k=='cls'&&v=='P')S.form='E';render()}
+function opts(title,n,k,vals,hint){return `<div class="st"><h2><span class="n">${n}</span>${title}</h2><div class="o">${vals.map(([v,t])=>`<button class="${S[k]==v?'on':''}" onclick="pick('${k}','${v}')">${t}</button>`).join('')}</div>${hint?`<p class="hint">${hint}</p>`:''}</div>`}
+function render(){let h='',d=0;
+ h+=opts('Класс проекта',1,'cls',[['K','Комфорт / Комфорт+'],['P','Премиум']]);
+ if(S.cls=='K'){d=1;h+=opts('Форма сделки',2,'form',[['E','ДДУ с эскроу'],['D','ДКП']])}
+ if(S.cls&&(S.form||S.cls=='P')){d=S.cls=='P'?1:2;
+  if(S.form!='D'){const b=uniq(rows().map(r=>r[1]));h+=opts('Банк эскроу',3,'bank',b.map(x=>[x,x]));if(S.bank)d=3}}
+ const ready=S.cls&&(S.form=='D'||S.bank);
+ if(ready){const c=uniq(rows().map(r=>r[2]));h+=opts('Условия сделки',4,'cond',c.map(x=>[x,x]));if(S.cond)d=4}
+ if(S.cond){const rs=rows(),cur=fk(S.fl);
+  const has=f=>rs.some(r=>r[3]==fk(f));
+  const t=[['М','МСК'],['П','Паркинг'],['С','СБР / аккредитив']].filter(([c])=>rs.some(r=>r[3].includes(c)));
+  h+=`<div class="st"><h2><span class="n">5</span>Дополнительные продукты</h2><div class="o">${t.map(([c,n])=>{const f=new Set(S.fl);f.has(c)?f.delete(c):f.add(c);return `<button class="${S.fl.has(c)?'on':''}" ${has(f)?'':'disabled'} onclick="tg('${c}')">${n}</button>`}).join('')}</div><p class="hint">Ничего не выбрано — памятка «Без доп. продуктов». Можно отметить несколько.</p></div>`;d=5}
+ $('steps').innerHTML=h;$('bar').innerHTML=[1,2,3,4,5].map(i=>`<i class="${i<=d?'d':''}"></i>`).join('');
+ result()}
+function tg(c){S.fl.has(c)?S.fl.delete(c):S.fl.add(c);render()}
+function ext(){return S.fl.has('М')?X:[]}
+function msg(){const l=B+S.main,e=ext(),n=($('nm')||{}).value;
+ let t=(n?n+', направляю':'Здравствуйте! Направляю')+' Вам памятку по этапам сделки, прошу ознакомиться:\n'+l;
+ if(e.length)t+='\n\n'+e.map(x=>`${x[0]}: ${B+x[1]}`).join('\n');
+ return t+'\n\nЕсли возникнут вопросы, пишите в чате или звоните.'}
+function result(){const o=$('out');if(!S.cond){o.innerHTML='';return}
+ const r=rows().find(r=>r[3]==fk(S.fl));
+ if(!r){o.innerHTML='<div class="res warn">Для такого сочетания памятки нет. Измените выбор.</div>';return}
+ S.main=r[4];const keep=$('nm')?$('nm').value:'';
+ const desc=[S.cls=='P'?'Премиум':S.form=='D'?'Комфорт · ДКП':'Комфорт · ДДУ с эскроу',S.bank,S.cond,[...S.fl].length?'+ '+[...S.fl].map(c=>({М:'МСК',П:'паркинг',С:'СБР'}[c])).join(', '):'без доп. продуктов'].filter(Boolean).join(' · ');
+ o.innerHTML=`<div class="res"><h2>Памятка найдена ✓</h2><div class="tag">${desc}</div>
+ <label>Имя клиента (необязательно)</label><input type="text" id="nm" value="${keep}" oninput="upd()" placeholder="Например, Анна Сергеевна">
+ 
+ <label>Готовое сообщение клиенту</label><textarea id="tx" oninput="">${msg()}</textarea>
+ <div class="act"><button class="p" id="cp" onclick="cp()">Скопировать сообщение</button><a class="g" target="_blank" rel="noopener" href="${B+r[4]}">Открыть памятку</a></div>
+ <button class="rs" onclick="location.reload()">Начать заново</button></div>`}
+function upd(){$('tx').value=msg()}
+function te(i,v){v?S.ex.add(i):S.ex.delete(i);upd()}
+function cp(){const t=$('tx');t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}
+ if(!ok&&navigator.clipboard)navigator.clipboard.writeText(t.value);$('cp').textContent='Скопировано ✓';setTimeout(()=>$('cp').textContent='Скопировать сообщение',1800)}
+render()
+</script></body></html>
